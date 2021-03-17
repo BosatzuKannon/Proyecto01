@@ -1,0 +1,19 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" >
+
+{% if questions %}
+    <ul>
+        {% for question in questions %}
+        
+            <li>
+            {% comment "" %}{{ question.id }}. {{question.question_text}}{% endcomment %}
+                <a href="{% url 'polls:detail' question.id  %}"> {{question.question_text}} </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+    <strong>No hay questions registradas</strong>
+
+{% endif %}

@@ -1,0 +1,19 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" >
+
+<h1> {{ question }} </h1>
+
+
+
+<form action="{% url 'polls:vote'  question.id %}" method="POST">
+
+    {% csrf_token %}
+
+    {% for choice in question.choice_set.all  %}
+        <label>{{ choice.choice_text }}</label>
+        <input value="{{ choice.id }}" name="choice" type="radio">            
+        
+    {% endfor %}
+    <input type="submit" value="Enviar" >
+
+</form>
